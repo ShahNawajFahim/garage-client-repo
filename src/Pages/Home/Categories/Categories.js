@@ -11,15 +11,22 @@ const Categories = () => {
             .then(data => setCategories(data))
     }, [])
     console.log(categories);
+
+
+
+
     return (
-        <div className='grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mb-10 sm:mx-auto'>
-            {
-                categories &&
-                categories.map(category => <CategoryCard
-                    key={category._id}
-                    category={category}
-                ></CategoryCard>)
-            }
+        <div>
+            <div><h1 className='text-5xl text-center mb-12'>Car Category</h1></div>
+            <div className='grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mb-10 mx-auto '>
+                {
+                    categories &&
+                    categories.map(category => <CategoryCard
+                        key={category._id}
+                        category={category}
+                    ></CategoryCard>)
+                }
+            </div>
         </div>
     );
 };
