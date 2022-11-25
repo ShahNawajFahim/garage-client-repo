@@ -4,6 +4,8 @@ import Main from "../../Layout/Main";
 import Home from "../../Pages/Home/Home/Home";
 import SalePost from "../../Pages/Home/SalePost/SalePost";
 import Login from "../../Pages/Login/Login";
+import Category from "../../Pages/ShowPost/Category";
+import PostCard from "../../Pages/ShowPost/PostCard";
 import SignUp from "../../Pages/SignUp/SignUp";
 
 const router = createBrowserRouter([
@@ -31,10 +33,20 @@ const router = createBrowserRouter([
                 path: '/post',
                 element: <SalePost></SalePost>
             },
-            // {
-            //     path: '/products/:id',
-            //     element:
-            // }
+            {
+                path: '/category/:id',
+                element: <Category></Category>,
+                loader: ({ params }) => fetch(`http://localhost:5000/category/${params.id}`)
+
+            },
+            {
+                path: '/sellpost/:id',
+                element: <PostCard></PostCard>,
+                loader: ({ params }) => fetch(`http://localhost:5000/sellpost/${params.id}`)
+
+            }
+
+
         ]
     }
 ])
