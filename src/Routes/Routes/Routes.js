@@ -1,4 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
+import NotFoundPage from "../../404NotFound/NotFoundPage";
 import Blog from "../../Blog/Blog";
 import Main from "../../Layout/Main";
 import Home from "../../Pages/Home/Home/Home";
@@ -47,7 +48,12 @@ const router = createBrowserRouter([
             }
 
 
+
         ]
+    },
+    {
+        path: '*',
+        element: <NotFoundPage></NotFoundPage>
     }
 ])
 

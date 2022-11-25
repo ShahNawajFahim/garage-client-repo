@@ -19,7 +19,7 @@ const CategoryCard = ({ category }) => {
 
 
 
-        <div className="card rounded  ">
+        <div className="card  rounded ">
             <figure><img src={picture} alt="" /></figure>
             <div className="card-body absolute text-white">
                 <h2 className="card-title">{name}</h2>
