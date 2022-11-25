@@ -1,13 +1,21 @@
 import { useQuery } from '@tanstack/react-query';
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import Loading from '../../Shared/Loading/Loading';
 
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+
+
 
 
 const SalePost = () => {
+
+
+    const [startDate, setStartDate] = useState(new Date());
+
 
     const { register, handleSubmit, formState: { errors } } = useForm();
 
@@ -73,43 +81,43 @@ const SalePost = () => {
     return (
         <div className='w-96 p-7 mx-auto'>
             <h2 className="text-4xl">Sell your Car</h2>
-            <form onSubmit={handleSubmit(handleSellPost)}>
+            <form onSubmit={handleSubmit(handleSellPost)} >
                 <div className="form-control w-full max-w-xs">
                     <label className="label"> <span className="label-text">Product name</span></label>
                     <input type="text" {...register("productName", {
                         required: "Name is Required"
-                    })} className="input input-bordered w-full max-w-xs" />
+                    })} className="input input-bordered input-sm w-full max-w-xs" />
                     {errors.name && <p className='text-red-500'>{errors.name.message}</p>}
                 </div>
                 <div className="form-control w-full max-w-xs">
                     <label className="label"> <span className="label-text">Location</span></label>
                     <input type="text" {...register("location", {
                         required: "Location is Required"
-                    })} className="input input-bordered w-full max-w-xs" />
+                    })} className="input input-bordered input-sm w-full max-w-xs" />
                 </div>
                 <div className="form-control w-full max-w-xs">
                     <label className="label"> <span className="label-text">Original Price</span></label>
                     <input type="number" {...register("originalPrice", {
                         required: "Original price is Required"
-                    })} className="input input-bordered w-full max-w-xs" />
+                    })} className="input input-bordered input-sm w-full max-w-xs" />
                 </div>
                 <div className="form-control w-full max-w-xs">
                     <label className="label"> <span className="label-text">Resale Price</span></label>
                     <input type="number" {...register("resalePrice", {
                         required: "Resale Price is Required"
-                    })} className="input input-bordered w-full max-w-xs" />
+                    })} className="input input-bordered input-sm w-full max-w-xs" />
                 </div>
                 <div className="form-control w-full max-w-xs">
                     <label className="label"> <span className="label-text">Years of use</span></label>
                     <input type="number" {...register("yearsOfUse", {
                         required: "years of use is Required"
-                    })} className="input input-bordered w-full max-w-xs" />
+                    })} className="input input-bordered input-sm w-full max-w-xs" />
                 </div>
-                <div className="form-control w-full max-w-xs">
+                <div className="form-control w-full  max-w-xs">
                     <label className="label"> <span className="label-text">Category</span></label>
                     <select
                         {...register('category_id')}
-                        className="select input-bordered w-full max-w-xs">
+                        className="select input-bordered input-sm w-full max-w-xs">
                         {
                             categories.map(category => <option
                                 key={category._id}
@@ -124,16 +132,34 @@ const SalePost = () => {
                 <div className="form-control w-full max-w-xs">
                     <label className="label"> <span className="label-text">Seller Name</span></label>
                     <input type="text"{...register("sellerName", {
-                        required: "Seller ame is Required"
-                    })} className="input input-bordered w-full max-w-xs" />
+                        required: "Seller name is Required"
+                    })} className="input input-bordered input-sm w-full max-w-xs" />
                 </div>
                 <div className="form-control w-full max-w-xs">
                     <label className="label"> <span className="label-text">Photo</span></label>
                     <input type="file" {...register("image", {
                         required: "Photo is Required"
-                    })} className="input input-bordered w-full max-w-xs" />
+                    })} className="input input-bordered input-sm " />
                     {errors.img && <p className='text-red-500'>{errors.img.message}</p>}
                 </div>
+
+
+
+                <div className="form-control  max-w-xs mt-2">
+                    <DatePicker className='w-full rounded  input input-bordered input-sm'
+                        selected={startDate}
+                        onChange={(date) => setStartDate(date)}
+                        showTimeSelect
+                        timeFormat="HH:mm"
+                        timeIntervals={1}
+                        timeCaption="time"
+                        dateFormat="MMMM d, yyyy h:mm aa"
+                    />
+                </div>
+
+
+
+
                 <input className='btn btn-accent w-full mt-4' value="POST" type="submit" />
             </form>
         </div>
