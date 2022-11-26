@@ -53,7 +53,9 @@ const SalePost = () => {
                         yearsOfUse: data.yearsOfUse,
                         category_id: data.category_id,
                         sellerName: data.sellerName,
-                        image: imgData.data.url
+                        image: imgData.data.url,
+                        dateAndTime: data.dateAndTime
+
                     }
 
                     // save doctor information to the database
@@ -146,7 +148,13 @@ const SalePost = () => {
 
 
                 <div className="form-control  max-w-xs mt-2">
-                    <DatePicker className='w-full rounded  input input-bordered input-sm'
+
+                    <DatePicker
+                        {...register("DateAndTime", {
+                            required: "DateAndTime is Required"
+                        })}
+
+                        className='w-full rounded  input input-bordered input-sm'
                         selected={startDate}
                         onChange={(date) => setStartDate(date)}
                         showTimeSelect

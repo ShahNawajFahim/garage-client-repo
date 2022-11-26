@@ -13,7 +13,7 @@ const PostCard = () => {
                 </div>
             </div>
             <Link to={`/category/${category_id}`}>
-                <button className="btn-primary">All news on this category</button>
+                <button className="btn-primary">All sell post on this category</button>
             </Link>
         </div>
     );

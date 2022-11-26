@@ -5,6 +5,7 @@ import Main from "../../Layout/Main";
 import Home from "../../Pages/Home/Home/Home";
 import SalePost from "../../Pages/Home/SalePost/SalePost";
 import Login from "../../Pages/Login/Login";
+import BookingModal from "../../Pages/ShowPost/BookingModal/BookingModal";
 import Category from "../../Pages/ShowPost/Category";
 import PostCard from "../../Pages/ShowPost/PostCard";
 import SignUp from "../../Pages/SignUp/SignUp";
@@ -45,6 +46,10 @@ const router = createBrowserRouter([
                 element: <PostCard></PostCard>,
                 loader: ({ params }) => fetch(`http://localhost:5000/sellpost/${params.id}`)
 
+            },
+            {
+                path: '/modal/:id',
+                element: <BookingModal></BookingModal>
             }
 
 
