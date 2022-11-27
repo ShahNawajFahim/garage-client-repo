@@ -40,7 +40,8 @@ const Navbar = () => {
                         }
                         {
                             isAdmin && <>
-                                <li><Link to="/admin/allusers">All Users</Link></li>
+                                <li><Link to="/admin/allusers">All Sellers</Link></li>
+                                <li><Link to="/admin/allbuyers">All Buyers</Link></li>
                                 <li><Link to="/admin/allposts">All Posts</Link></li>
                             </>
                         }

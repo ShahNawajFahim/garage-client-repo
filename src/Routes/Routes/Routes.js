@@ -3,7 +3,9 @@ import NotFoundPage from "../../404NotFound/NotFoundPage";
 import Blog from "../../Blog/Blog";
 import Main from "../../Layout/Main";
 import AllPost from "../../Pages/AllPost/AllPost";
-import AllUsers from "../../Pages/AllUsers/AllUsers";
+import AllBuyers from "../../Pages/AllUsers/AllBuyers";
+import AllSellers from "../../Pages/AllUsers/AllSellers";
+import AllUsers from "../../Pages/AllUsers/AllSellers";
 import Home from "../../Pages/Home/Home/Home";
 import SalePost from "../../Pages/Home/SalePost/SalePost";
 import Login from "../../Pages/Login/Login";
@@ -52,9 +54,15 @@ const router = createBrowserRouter([
             },
             {
                 path: '/admin/allusers',
-                element: <PrivateRoute><AdminRoute><AllUsers></AllUsers></AdminRoute></PrivateRoute>
+                element: <PrivateRoute><AdminRoute><AllSellers></AllSellers></AdminRoute></PrivateRoute>
 
             },
+            {
+                path: '/admin/allbuyers',
+                element: <PrivateRoute><AdminRoute><AllBuyers></AllBuyers></AdminRoute></PrivateRoute>
+
+            },
+
             {
                 path: '/admin/allposts',
                 element: <PrivateRoute><AdminRoute><AllPost></AllPost></AdminRoute></PrivateRoute>
