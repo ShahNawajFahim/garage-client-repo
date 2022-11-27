@@ -32,7 +32,7 @@ const BookingModal = ({ bookingInfo, setBookingInfo }) => {
                     <label htmlFor="booking-modal" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
 
                     <form onSubmit={handleBooking} className='grid grid-cols-1 gap-3 mt-10'>
-                        <input name="name" type="text" defaultValue={productName} placeholder="Your Name" className="input w-full input-sm font-bold" readOnly />
+                        <input name="name" type="text" defaultValue={productName} placeholder="Your Name" className="input w-full input-sm font-bold text-2xl" readOnly />
                         <input name="name" type="text" defaultValue={`Price:${resalePrice} $`} placeholder="Your Name" className="input w-full input-sm font-bold" readOnly />
                         <input name="name" type="text" defaultValue={user?.displayName} placeholder="Your Name" className="input w-full input-sm " readOnly />
                         <input name="email" type="email" defaultValue={user?.email} placeholder="Email Address" className="input w-full input-sm " readOnly />

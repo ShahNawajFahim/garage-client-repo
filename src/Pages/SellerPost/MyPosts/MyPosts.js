@@ -11,7 +11,7 @@ const MyPosts = () => {
     useEffect(() => {
         fetch(`http://localhost:5000/sellposts?email=${user?.email}`, {
             headers: {
-                authorization: `Bearer ${localStorage.getItem('accessToken')}`
+                authorization: `bearer ${localStorage.getItem('accessToken')}`
             }
         })
             .then(res => {
@@ -47,7 +47,7 @@ const MyPosts = () => {
 
     return (
         <div className='grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 sm:mx-auto my-10'>
-            {
+            {posts &&
                 posts.map(post => <div >
                     <div className="card w-auto glass bg-base-100 shadow-2xl">
                         <figure><img src={post.image} alt="Shoes" style={{ height: 280, width: 500 }} /></figure>

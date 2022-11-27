@@ -10,6 +10,7 @@ import useToken from '../../hooks/useToken';
 
 
 
+
 const SignUp = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const { createUser, updateUser, providerLogin } = useContext(AuthContext);

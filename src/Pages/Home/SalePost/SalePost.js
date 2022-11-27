@@ -51,16 +51,18 @@ const SalePost = () => {
                         location: data.location,
                         originalPrice: data.originalPrice,
                         resalePrice: data.resalePrice,
-                        yearsOfUse: data.yearsOfUse,
+                        yearOfPurchase: data.yearOfPurchase,
                         category_id: data.category_id,
                         sellerName: data.sellerName,
                         image: imgData.data.url,
                         email: data.email,
+                        condition: data.condition,
+                        phone: data.phone,
+                        description: data.description,
                         // dateAndTime: data.dateAndTime
 
                     }
 
-                    // save doctor information to the database
                     fetch('http://localhost:5000/sellpost', {
                         method: 'POST',
                         headers: {
@@ -73,6 +75,7 @@ const SalePost = () => {
                         .then(result => {
                             console.log(result);
                             toast.success(`Sell post is added successfully`);
+                            navigate('/myposts')
                         })
                 }
             })
@@ -112,10 +115,34 @@ const SalePost = () => {
                     })} className="input input-bordered input-sm w-full max-w-xs" />
                 </div>
                 <div className="form-control w-full max-w-xs">
-                    <label className="label"> <span className="label-text">Years of use</span></label>
-                    <input type="number" {...register("yearsOfUse", {
-                        required: "years of use is Required"
+                    <label className="label"> <span className="label-text">Year of purchase</span></label>
+                    <input type="number" {...register("yearOfPurchase", {
+                        required: "year of purchase is Required"
                     })} className="input input-bordered input-sm w-full max-w-xs" />
+                </div>
+
+                <div className="form-control w-full max-w-xs">
+                    <label className="label"> <span className="label-text">Phone</span></label>
+                    <input type="number" {...register("phone", {
+                        required: "Phone is Required"
+                    })} className="input input-bordered w-full max-w-xs" />
+                </div>
+
+                <div className="form-control w-full max-w-xs">
+                    <label className="label"> <span className="label-text">Condition Type </span></label>
+                    <select className="select select-primary w-full max-w-xs" {...register("condition", {
+                    })}>
+                        <option selected>Fair</option>
+                        <option>Good</option>
+                        <option>Excellent</option>
+                    </select>
+                </div>
+
+                <div className="form-control w-full max-w-xs">
+                    <label className="label"> <span className="label-text">Description</span></label>
+                    <textarea {...register("description", {
+                        required: "description is Required"
+                    })} className="textarea textarea-bordered" placeholder="Bio"></textarea>
                 </div>
                 <div className="form-control w-full  max-w-xs">
                     <label className="label"> <span className="label-text">Category</span></label>
@@ -152,9 +179,12 @@ const SalePost = () => {
                     <label className="label"> <span className="label-text">Photo</span></label>
                     <input type="file" {...register("image", {
                         required: "Photo is Required"
-                    })} className="input input-bordered input-sm " />
+                    })} className="input input-bordered pt-2 " />
                     {errors.img && <p className='text-red-500'>{errors.img.message}</p>}
                 </div>
+
+
+
 
 
 
