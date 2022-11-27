@@ -2,10 +2,13 @@ import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { FaUser } from "react-icons/fa";
 import { AuthContext } from '../../../Context/AuthProvider';
+import useSeller from '../../../hooks/useSeller';
+import useAdmin from '../../../hooks/useAdmin';
 
 const Navbar = () => {
     const { user, logOut } = useContext(AuthContext);
-
+    const [isSeller] = useSeller(user?.email)
+    const [isAdmin] = useAdmin(user?.email)
     const handleLogOut = () => {
         logOut()
             .then()
@@ -30,6 +33,17 @@ const Navbar = () => {
                     <ul className="menu menu-horizontal p-0">
                         <li><Link to='/'>Home</Link></li>
                         <li><Link to='/blog'>Blog</Link></li>
+                        {
+                            isSeller && <>
+                                <li><Link to="/myposts">My Posts</Link></li>
+                            </>
+                        }
+                        {
+                            isAdmin && <>
+                                <li><Link to="/admin/allusers">All Users</Link></li>
+                                <li><Link to="/admin/allposts">All Posts</Link></li>
+                            </>
+                        }
                     </ul>
                 </div>
                 <div className="navbar-end">

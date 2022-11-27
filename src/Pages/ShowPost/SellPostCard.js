@@ -1,6 +1,6 @@
 import React from 'react';
 
-const SellPostCard = ({ sellPost }) => {
+const SellPostCard = ({ sellPost, setBookingInfo }) => {
     const { productName, location, originalPrice, resalePrice, yearsOfUse, sellerName, image, } = sellPost;
     return (
         <div>
@@ -13,7 +13,13 @@ const SellPostCard = ({ sellPost }) => {
                     <p>Years of use: {yearsOfUse}</p>
                     <p>Location: {location}</p>
                     <p>Seller name: {sellerName}</p>
-                    <button className='btn btn-primary'>Book Now</button>
+                    <div>
+                        <label
+                            htmlFor="booking-modal"
+                            className="btn btn-primary text-white"
+                            onClick={() => setBookingInfo(sellPost)}
+                        >Book Now</label>
+                    </div>
                 </div>
             </div>
         </div>

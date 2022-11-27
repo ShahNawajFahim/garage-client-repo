@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
@@ -7,13 +7,14 @@ import Loading from '../../Shared/Loading/Loading';
 
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { AuthContext } from '../../../Context/AuthProvider';
 
 
 
 
 const SalePost = () => {
 
-
+    const { user } = useContext(AuthContext);
     const [startDate, setStartDate] = useState(new Date());
 
 
@@ -54,7 +55,8 @@ const SalePost = () => {
                         category_id: data.category_id,
                         sellerName: data.sellerName,
                         image: imgData.data.url,
-                        dateAndTime: data.dateAndTime
+                        email: data.email,
+                        // dateAndTime: data.dateAndTime
 
                     }
 
@@ -137,6 +139,15 @@ const SalePost = () => {
                         required: "Seller name is Required"
                     })} className="input input-bordered input-sm w-full max-w-xs" />
                 </div>
+
+                <div className="form-control w-full max-w-xs">
+                    <label className="label"> <span className="label-text">Email</span></label>
+                    <input type="email" defaultValue={user?.email} {...register("email", {
+                        required: true
+                    })} className="input input-bordered w-full max-w-xs" readOnly />
+                    {errors.email && <p className='text-red-500'>{errors.email.message}</p>}
+                </div>
+
                 <div className="form-control w-full max-w-xs">
                     <label className="label"> <span className="label-text">Photo</span></label>
                     <input type="file" {...register("image", {
@@ -147,7 +158,7 @@ const SalePost = () => {
 
 
 
-                <div className="form-control  max-w-xs mt-2">
+                {/* <div className="form-control  max-w-xs mt-2">
 
                     <DatePicker
                         {...register("DateAndTime", {
@@ -163,7 +174,7 @@ const SalePost = () => {
                         timeCaption="time"
                         dateFormat="MMMM d, yyyy h:mm aa"
                     />
-                </div>
+                </div> */}
 
 
 
