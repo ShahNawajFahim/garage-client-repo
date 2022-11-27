@@ -1,6 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import NotFoundPage from "../../404NotFound/NotFoundPage";
 import Blog from "../../Blog/Blog";
+import DashboardLayout from "../../Layout/DashboardLayout";
 import Main from "../../Layout/Main";
 import AllPost from "../../Pages/AllPost/AllPost";
 import AllBuyers from "../../Pages/AllUsers/AllBuyers";
@@ -38,10 +39,7 @@ const router = createBrowserRouter([
                 path: '/blog',
                 element: <Blog></Blog>
             },
-            {
-                path: '/post',
-                element: <SalePost></SalePost>
-            },
+
             {
                 path: '/category/:id',
                 element: <Category></Category>,
@@ -52,30 +50,40 @@ const router = createBrowserRouter([
                 path: '/modal/:id',
                 element: <BookingModal></BookingModal>
             },
-            {
-                path: '/admin/allusers',
-                element: <PrivateRoute><AdminRoute><AllSellers></AllSellers></AdminRoute></PrivateRoute>
-
-            },
-            {
-                path: '/admin/allbuyers',
-                element: <PrivateRoute><AdminRoute><AllBuyers></AllBuyers></AdminRoute></PrivateRoute>
-
-            },
-
-            {
-                path: '/admin/allposts',
-                element: <PrivateRoute><AdminRoute><AllPost></AllPost></AdminRoute></PrivateRoute>
-
-            },
-            {
-                path: '/myposts',
-                element: <PrivateRoute><SellerRoute><MyPosts></MyPosts></SellerRoute></PrivateRoute>
-            },
 
 
 
         ]
+    },
+    {
+        path: '/dashboard',
+        element: <PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute>,
+        children: [
+            {
+                path: '/dashboard/myposts',
+                element: <SellerRoute><MyPosts></MyPosts></SellerRoute>
+            },
+            {
+                path: '/dashboard/sellpost',
+                element: <SellerRoute><SalePost></SalePost></SellerRoute>
+            },
+            {
+                path: '/dashboard/allposts',
+                element: <AdminRoute><AllPost></AllPost></AdminRoute>
+
+            },
+            {
+                path: '/dashboard/allseller',
+                element: <AdminRoute><AllSellers></AllSellers></AdminRoute>
+
+            },
+            {
+                path: '/dashboard/allbuyer',
+                element: <AdminRoute><AllBuyers></AllBuyers></AdminRoute>
+
+            },
+        ]
+
     },
     {
         path: '*',
