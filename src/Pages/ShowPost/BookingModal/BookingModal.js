@@ -27,7 +27,7 @@ const BookingModal = ({ bookingInfo, setBookingInfo }) => {
         }
 
 
-        fetch('http://localhost:5000/bookings', {
+        fetch('https://garage-server.vercel.app/bookings', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
