@@ -55,7 +55,7 @@ const MyPosts = () => {
                             <h2 className="card-title">{post.productName}</h2>
                             <p>Original price: ${post.originalPrice}</p>
                             <p>Resale price: ${post.resalePrice}</p>
-                            <p>Years of use: {post.yearsOfUse}</p>
+                            <p>Year of Purchase: {post.yearOfPurchase}</p>
                             <p>Location: {post.location}</p>
                             <p>Seller name: {post.sellerName}</p>
                             <div className="card-actions justify-end">

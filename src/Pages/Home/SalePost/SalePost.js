@@ -75,7 +75,7 @@ const SalePost = () => {
                         .then(result => {
                             console.log(result);
                             toast.success(`Sell post is added successfully`);
-                            navigate('/myposts')
+                            navigate('/dashboard/myposts')
                         })
                 }
             })

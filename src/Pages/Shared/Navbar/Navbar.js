@@ -4,6 +4,7 @@ import { FaUser } from "react-icons/fa";
 import { AuthContext } from '../../../Context/AuthProvider';
 import useSeller from '../../../hooks/useSeller';
 import useAdmin from '../../../hooks/useAdmin';
+import logo from '../../../assets/images/logo1.png';
 
 const Navbar = () => {
     const { user, logOut } = useContext(AuthContext);
@@ -25,9 +26,11 @@ const Navbar = () => {
                         <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 ">
                             <li><Link to='/'>Home</Link></li>
                             <li><Link to='/blog'>Blog</Link></li>
+                            <li><Link to='/dashboard'>Dashboard</Link></li>
                         </ul>
                     </div>
-                    <Link className="btn btn-ghost normal-case text-xl font-bold">Garage</Link>
+                    <img src={logo} alt='' className='h-9 ' />
+                    <Link to='/' className="btn btn-ghost normal-case text-xl font-bold">Garage</Link>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal p-0">
