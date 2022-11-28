@@ -10,7 +10,7 @@ const AllPost = () => {
     const { data: posts = [], refetch } = useQuery({
         queryKey: ['posts'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/sellpost');
+            const res = await fetch('https://garage-server.vercel.app/sellpost');
             const data = await res.json();
             return data;
         }
@@ -19,7 +19,7 @@ const AllPost = () => {
     const handleDelete = id => {
         const proceed = window.confirm('Are you sure, you want to delete this sell post');
         if (proceed) {
-            fetch(`http://localhost:5000/sellpost/${id}`, {
+            fetch(`https://garage-server.vercel.app/sellpost/${id}`, {
                 method: 'DELETE',
                 headers: {
                     authorization: `bearer ${localStorage.getItem('accessToken')}`

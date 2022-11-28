@@ -10,6 +10,7 @@ import AllUsers from "../../Pages/AllUsers/AllSellers";
 import Home from "../../Pages/Home/Home/Home";
 import SalePost from "../../Pages/Home/SalePost/SalePost";
 import Login from "../../Pages/Login/Login";
+import MyBookings from "../../Pages/MyBookings/MyBookings";
 import MyPosts from "../../Pages/SellerPost/MyPosts/MyPosts";
 import BookingModal from "../../Pages/ShowPost/BookingModal/BookingModal";
 import Category from "../../Pages/ShowPost/Category";
@@ -43,7 +44,7 @@ const router = createBrowserRouter([
             {
                 path: '/category/:id',
                 element: <Category></Category>,
-                loader: ({ params }) => fetch(`http://localhost:5000/category/${params.id}`)
+                loader: ({ params }) => fetch(`https://garage-server.vercel.app/category/${params.id}`)
 
             },
             {
@@ -82,6 +83,10 @@ const router = createBrowserRouter([
                 element: <AdminRoute><AllBuyers></AllBuyers></AdminRoute>
 
             },
+            {
+                path: '/dashboard/mybookings',
+                element: <MyBookings></MyBookings>
+            }
         ]
 
     },

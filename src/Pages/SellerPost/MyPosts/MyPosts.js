@@ -9,7 +9,7 @@ const MyPosts = () => {
     const [posts, setPosts] = useState([])
 
     useEffect(() => {
-        fetch(`http://localhost:5000/sellposts?email=${user?.email}`, {
+        fetch(`https://garage-server.vercel.app/sellposts?email=${user?.email}`, {
             headers: {
                 authorization: `bearer ${localStorage.getItem('accessToken')}`
             }
@@ -28,7 +28,7 @@ const MyPosts = () => {
     const handleDelete = id => {
         const proceed = window.confirm('Are you sure?');
         if (proceed) {
-            fetch(`http://localhost:5000/sellpost/${id}`, {
+            fetch(`https://garage-server.vercel.app/sellpost/${id}`, {
                 method: 'DELETE',
                 headers: {
                     authorization: `bearer ${localStorage.getItem('accessToken')}`
